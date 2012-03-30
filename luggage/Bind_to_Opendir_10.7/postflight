@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Script I use to bind a 10.7 client to Open Directory + SSL
+# It doesn't work, as postinstall doesn't seem to use << OEF trick.
+
+# Define variables for path to executables
+DSCONFIGLDAP="$1/usr/sbin/dsconfigldap"
+DEFAULTS="$1/usr/bin/defaults"
+DSCONFIGLDAP="$1/usr/sbin/dsconfigldap"
+
+# Define variables
+ODM="nestor.esl.lan"
+
+# Output variables
+echo We will bind to $ODM
+
+
+# Bind to the Open Directory Master
+$DSCONFIGLDAP -vsemgx -a $ODM << EOF
+y
+EOF
+
+# done ! :)
