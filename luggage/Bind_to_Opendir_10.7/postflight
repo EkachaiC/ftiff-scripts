@@ -1,12 +1,10 @@
 #!/bin/sh
 
 # Script I use to bind a 10.7 client to Open Directory + SSL
-# It doesn't work, as postinstall doesn't seem to use << OEF trick.
+# Use only on startup volume, in casper suite, 
 
 # Define variables for path to executables
-DSCONFIGLDAP="$1/usr/sbin/dsconfigldap"
-DEFAULTS="$1/usr/bin/defaults"
-DSCONFIGLDAP="$1/usr/sbin/dsconfigldap"
+DSCONFIGLDAP="/usr/sbin/dsconfigldap"
 
 # Define variables
 ODM="nestor.esl.lan"
@@ -16,6 +14,7 @@ echo We will bind to $ODM
 
 
 # Bind to the Open Directory Master
+echo $DSCONFIGLDAP -vsemgx -a $ODM
 $DSCONFIGLDAP -vsemgx -a $ODM << EOF
 y
 EOF
