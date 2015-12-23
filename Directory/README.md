@@ -1,0 +1,15 @@
+This script will allow 10.7.2+ clients to bind to a 10.7 Open Directory Server
+
+Flags used are : 
+-v             verbose logging to stdout
+-x             choose SSL connection
+-s             enforce secure authentication only
+-g             enforce packet signing security policy
+-m             enforce man-in-middle security policy
+-e             enforce encryption security policy
+
+The << EOF trick allow you to bypass the warning to add the trusted certificate
+to the system keychain.
+
+--ftiff
+

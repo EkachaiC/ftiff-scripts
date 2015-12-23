@@ -1,0 +1,17 @@
+#!/bin/sh
+
+OS=`/usr/bin/defaults read /System/Library/CoreServices/SystemVersion ProductVersion | awk '{print substr($1,1,4)}'`
+caCertLocation=/etc/CA.pem
+
+if [ "$caCertLocation" == "" ] || [ ! -f "$caCertLocation" ]; then
+	echo "Error:  No value was specified for the caCertLocation variable or the file does not exist.  Please specify a value for the variable or ensure that you are running this script after installing the certificate."
+	exit 1
+fi
+
+if [[ "$OS" < "10.5" ]]; then
+	echo "Importing CA Cert..."
+	/usr/bin/certtool i "$caCertLocation" v k=/System/Library/Keychains/X509Anchors
+else
+	echo "Importing CA Cert..."
+	/usr/bin/security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain "$caCertLocation"
+fi
