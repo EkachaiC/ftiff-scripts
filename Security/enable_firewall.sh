@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Found on http://stackoverflow.com/questions/5195607/checking-bash-exit-status-of-several-commands-efficiently
 function test_command {
@@ -16,6 +16,6 @@ function test_command {
 
 socketfilterfw="/usr/libexec/ApplicationFirewall/socketfilterfw"
 
-${testcommand} ${socketfilterfw} --setglobalstate on
-${testcommand} ${socketfilterfw} --setallowsigned on
-${testcommand} ${socketfilterfw} --setstealthmode on
+test_command ${socketfilterfw} --setglobalstate on
+test_command ${socketfilterfw} --setallowsigned on
+test_command ${socketfilterfw} --setstealthmode on
